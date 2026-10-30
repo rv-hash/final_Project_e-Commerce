@@ -1,0 +1,88 @@
+/* Ported from your Side_Menu.css and style.css — layout and colors are the same. */
+body { font-family: Arial, sans-serif; background: var(--bs-tertiary-bg); }
+
+/* Buttons: keep your slate color */
+.btn-primary {
+  --bs-btn-bg: #1e293b; --bs-btn-border-color: #1e293b;
+  --bs-btn-hover-bg: #334155; --bs-btn-hover-border-color: #334155;
+  --bs-btn-active-bg: #172554; --bs-btn-active-border-color: #172554;
+  --bs-btn-disabled-bg: #64748b; --bs-btn-disabled-border-color: #64748b;
+}
+[data-bs-theme='dark'] .btn-primary {
+  --bs-btn-bg: #3b4a63; --bs-btn-border-color: #3b4a63;
+  --bs-btn-hover-bg: #475569; --bs-btn-hover-border-color: #475569;
+}
+
+/* ===== Side menu ===== */
+.sidebar {
+  position: fixed; top: 0; left: 0; height: 100vh; width: 240px;
+  background-color: #1e293b; color: #faf3f3; padding: 20px 0;
+  transition: transform 0.3s ease; overflow-y: auto; z-index: 100;
+}
+.sidebar.collapsed { transform: translateX(-240px); }
+[data-bs-theme='dark'] .sidebar { background-color: #1e1e1e; }
+.store-name {
+  font-size: 22px; font-weight: bold; text-align: center;
+  padding: 10px 15px 10px; margin-bottom: 0;
+}
+.sidebar-user { border-bottom: 1px solid #334155; margin-bottom: 15px; }
+.menu-group { margin-bottom: 20px; padding: 0 10px; }
+.group-title {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 1px;
+  color: #94a3b8; padding: 8px 10px; margin-bottom: 5px;
+}
+.sidebar a {
+  display: block; color: #e2e8f0; text-decoration: none; padding: 12px 15px;
+  border-radius: 6px; margin-bottom: 4px; font-size: 15px;
+  border-left: 5px solid transparent; transition: background 0.2s ease;
+}
+.sidebar a:hover { background-color: #334155; }
+.sidebar a.active { background-color: #172554; font-weight: bold; border-left: 5px solid #fff; }
+.sidebar a:focus-visible, .menu-toggle:focus-visible { outline: 3px solid #fbbf24; outline-offset: 2px; }
+
+.menu-toggle {
+  position: fixed; top: 15px; left: 260px; padding: 8px 14px; background: #1e293b; color: #fff;
+  border: none; border-radius: 5px; cursor: pointer; font-size: 15px;
+  transition: left 0.3s ease; z-index: 101;
+}
+.sidebar.collapsed ~ .menu-toggle { left: 15px; }
+
+.main-content { margin-left: 240px; padding: 80px 40px 40px; transition: margin-left 0.3s ease; min-height: 100vh; }
+.sidebar.collapsed ~ .main-content { margin-left: 0; }
+.sidebar-backdrop { display: none; }
+
+.toast-top { z-index: 1100; position: fixed; }
+
+/* ===== Content ===== */
+.main-content h1 { margin-bottom: 15px; }
+.subtitle { color: var(--bs-secondary-color); margin-bottom: 25px; line-height: 1.5; }
+.section-title { margin: 30px 0 15px; font-size: 1.5rem; }
+.card-img { height: 180px; object-fit: cover; }
+.price { font-weight: bold; font-size: 18px; margin: 10px 0 4px; }
+.cart-total { margin: 20px 0; font-size: 20px; }
+.promo-banner { background: #172554; color: #fff; }
+.profile-img { width: 120px; height: 120px; border-radius: 50%; margin: 20px 0; object-fit: cover; }
+.info-item { background: var(--bs-body-bg); padding: 15px; border-radius: 8px; height: 100%; }
+.label { display: block; color: var(--bs-secondary-color); font-size: 13px; margin-bottom: 5px; }
+.setting-row {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bs-body-bg); padding: 15px; margin-bottom: 8px; border-radius: 6px;
+}
+.setting-row .form-check { margin: 0; }
+
+/* ===== Login ===== */
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.login-card { width: 100%; max-width: 420px; }
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .sidebar { width: 220px; }
+  .sidebar.collapsed { transform: translateX(-220px); }
+  .main-content { margin-left: 0; padding: 80px 20px 30px; }
+  .menu-toggle { left: 15px; }
+  .sidebar:not(.collapsed) ~ .menu-toggle { left: 235px; }
+  .sidebar-backdrop { display: block; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: 99; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .menu-toggle, .main-content { transition: none; }
+}

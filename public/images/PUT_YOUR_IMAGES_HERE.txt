@@ -1,0 +1,7 @@
+Copy your food photos into this folder and rename them (no spaces):
+  choco butterbonia.png -> choco-butterbonia.png
+  milkteaf.png          -> milkteaf.png
+  nata.png              -> nata.png
+  palamig.png           -> palamig.png
+  siomai ric.png        -> siomai-ric.png
+Missing images fall back to a placeholder automatically.
